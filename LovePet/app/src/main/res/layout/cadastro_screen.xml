@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:paddingTop="15dp"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:layout_scrollFlags="scroll|enterAlways">
+            <TextView
+                android:text="Cadastro"
+                android:gravity="center_horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffffff"
+                android:textStyle="bold"
+                android:textSize="25dp" />
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout android:paddingRight="10dp"
+        android:orientation="vertical"
+        android:layout_marginTop="80dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:src="@drawable/icon_nome_cadastro"
+                android:layout_gravity="center_vertical" />
+            <EditText
+                android:id="@+id/usuario"
+                android:hint="@string/usuario"
+                android:layout_width="match_parent"
+                android:textColorHint="@android:color/background_dark"
+                android:textColor="@android:color/background_dark"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:layout_gravity="bottom"
+                android:gravity="bottom" />
+            <requestFocus />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:src="@drawable/icon_nome_cadastro"
+                android:layout_gravity="center_vertical" />
+            <EditText
+                android:id="@+id/email"
+                android:hint="E-Mail"
+                android:layout_width="match_parent"
+                android:textColorHint="@android:color/background_dark"
+                android:textColor="@android:color/background_dark"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:layout_gravity="bottom"
+                android:gravity="bottom" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:src="@drawable/icon_nome_cadastro"
+                android:layout_gravity="center_vertical" />
+            <EditText
+                android:id="@+id/senha"
+                android:hint="Senha"
+                android:layout_width="match_parent"
+                android:textColorHint="@android:color/background_dark"
+                android:textColor="@android:color/background_dark"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:layout_gravity="bottom"
+                android:gravity="bottom" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:src="@drawable/icon_nome_cadastro"
+                android:layout_gravity="center_vertical" />
+            <EditText
+                android:id="@+id/aniversario"
+                android:hint="Aniverário"
+                android:layout_width="match_parent"
+                android:textColorHint="@android:color/background_dark"
+                android:textColor="@android:color/background_dark"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:layout_gravity="bottom"
+                android:gravity="bottom" />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="Continuar"
+            android:textColor="@android:color/background_dark"
+            android:id="@+id/button"
+            android:background="@drawable/custom_button"
+            android:layout_gravity="center_horizontal"
+            android:onClick="onCriarCadastroClick" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/background_dark"
+            android:text="Já tenho conta!"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/background_dark"
+            android:text="Entrar"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
