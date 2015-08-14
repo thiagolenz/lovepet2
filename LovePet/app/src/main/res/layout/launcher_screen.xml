@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="#ffffffff"
                 android:textStyle="bold"
-                android:textSize="25dp" />
+                android:textSize="22dp" />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
