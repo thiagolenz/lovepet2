@@ -3,10 +3,11 @@
     <style name="AppTheme" parent="BaseTheme"/>
 
     <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/primary</item> 
-        <item name="colorPrimaryDark">@color/primary_dark</item> 
-        <item name="colorControlHighlight">@color/accent_translucent</item> 
-        <item name="colorAccent">@color/accent</item>
+        <item name="colorPrimary">#E91E63</item> 
+        <!--<item name="colorPrimaryDark">#C2185B</item> -->
+        <item name="colorPrimaryDark">#E91E63</item> 
+        <item name="colorControlHighlight">@android:color/secondary_text_dark</item>  <!--ultimo -->
+        <item name="colorAccent">#E91E63</item>
         <item name="selectableItemBackground">@drawable/selectable_item_background</item>
         <item name="android:selectableItemBackground">@drawable/selectable_item_background</item>
     </style>
@@ -22,9 +23,9 @@
         <item name="rippleColor">@android:color/white</item>
     </style>
 
-    <color name="primary">#00BCD4</color>
-    <color name="primary_dark">#0097A7</color>
-    <color name="accent">#FFEB3B</color>
-    <color name="accent_translucent">#80FFEB3B</color>
-    <color name="accent_bright">#FFF493</color>
+    <color name="primary">#E91E63</color>
+    <color name="primary_dark">#E91E63</color>
+    <color name="accent">@color/material_blue_grey_800</color>
+    <color name="accent_translucent">@color/material_blue_grey_800</color>
+    <color name="accent_bright">#B6B6B6</color>
 </resources>

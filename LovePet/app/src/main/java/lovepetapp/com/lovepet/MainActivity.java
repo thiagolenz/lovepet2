@@ -1,5 +1,6 @@
 package lovepetapp.com.lovepet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -13,12 +14,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import lovepetapp.com.lovepet.gps.GPSTracker;
 import lovepetapp.com.lovepet.picasso.CircleTransform;
 
 
@@ -51,6 +54,14 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
         final ImageView avatar = (ImageView) findViewById(R.id.avatar);
         Picasso.with(this).load(AVATAR_URL).transform(new CircleTransform()).into(avatar);
+
+        GPSTracker gps = new GPSTracker(this);
+        if (gps.canGetLocation()) {
+            double latitude = gps.getLatitude();
+            double longitude = gps.getLongitude();
+
+            Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
+        }
     }
 
     private void initRecyclerView() {
@@ -106,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     }
 
     @Override public void onItemClick(View view, ViewModel viewModel) {
-        DetailActivity.navigate(this, view.findViewById(R.id.image), viewModel);
+        Intent intent = new Intent(MainActivity.this, PetMapActivity.class);
+        startActivity(intent);
     }
 }
