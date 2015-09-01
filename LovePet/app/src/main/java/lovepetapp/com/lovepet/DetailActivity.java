@@ -95,7 +95,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private void updateBackground(FloatingActionButton fab, Palette palette) {
         int lightVibrantColor = palette.getLightVibrantColor(getResources().getColor(android.R.color.white));
-        int vibrantColor = palette.getVibrantColor(getResources().getColor(R.color.accent));
+        int vibrantColor = palette.getVibrantColor(getResources().getColor(R.color.primary_dark));
 
         fab.setRippleColor(lightVibrantColor);
         fab.setBackgroundTintList(ColorStateList.valueOf(vibrantColor));

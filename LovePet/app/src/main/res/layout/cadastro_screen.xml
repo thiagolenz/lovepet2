@@ -31,10 +31,11 @@
 
     <LinearLayout android:paddingRight="10dp"
         android:paddingLeft="15dp"
+        android:background="@android:color/white"
         android:orientation="vertical"
-        android:layout_marginTop="80dp"
+        android:paddingTop="80dp"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="fill_parent">
         <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
             <ImageView
                 android:layout_gravity="center_horizontal"
@@ -50,7 +51,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="26dp"
-                android:src="@drawable/icon_nome_cadastro"
+                android:src="@drawable/ic_nome_cadastro"
                 android:layout_gravity="center_vertical" />
             <EditText
                 android:id="@+id/nome"
@@ -98,7 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="26dp"
 
-                android:src="@drawable/icon_senha_cadastro"
+                android:src="@drawable/ic_senha_cadastro"
                 android:layout_gravity="center_vertical" />
             <EditText
                 android:id="@+id/senha"
