@@ -2,6 +2,7 @@ package lovepetapp.com.lovepet;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -25,6 +26,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
         final ListView listview = (ListView) findViewById(R.id.actionList);
         String[] values = new String[]{"Consultas", "Vacinações", "Medicamentos",
-                "Banho", "Ache um PET"};
+                "Banho", "Ache um PET", "Tosa"};
 
         final ArrayList<String> list = new ArrayList<String>();
         for (int i = 0; i < values.length; ++i) {
@@ -76,6 +78,14 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         final ArrayAdapter adapter = new ArrayAdapter(this,
                 R.layout.main_list_item_view, R.id.custom_item_label, values);
         listview.setAdapter(adapter);
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, ListaPetShopsActivity.class);
+                startActivity(intent);
+            }
+        });
 //
 //        GPSTracker gps = new GPSTracker(this);
 //        if (gps.canGetLocation()) {

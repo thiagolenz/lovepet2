@@ -32,7 +32,7 @@
 
         <TextView
             android:text="Localidade, ES"
-            android:drawableLeft="@drawable/ic_marker_custom"
+            android:drawableLeft="@drawable/ic_pin_drop_black_24dp"
             android:textAlignment="center"
             android:gravity="center_vertical"
             android:layout_gravity="center_horizontal"
