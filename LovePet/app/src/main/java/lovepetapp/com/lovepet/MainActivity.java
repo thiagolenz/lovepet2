@@ -223,7 +223,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         // Once complete, see if ImageView is still around and set bitmap.
         @Override
         protected void onPostExecute(Bitmap bitmap) {
-            Picasso.with(MainActivity.this).load(R.drawable.ic_user_avatar).transform(new CircleTransform()).into(imageView);
+            Picasso.with(MainActivity.this).load(R.drawable.icon_perfil_foto_cadastro).transform(new CircleTransform()).into(imageView);
         }
     }
 }

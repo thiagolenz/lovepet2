@@ -60,6 +60,7 @@ public class CadastroActivity extends AppCompatActivity {
 
         Intent intent = new Intent(CadastroActivity.this, MainActivity.class);
         startActivity(intent);
+        finish ();
     }
 
     private void initToolbar() {

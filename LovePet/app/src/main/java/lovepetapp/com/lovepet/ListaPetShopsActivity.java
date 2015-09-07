@@ -30,6 +30,7 @@ public class ListaPetShopsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.out.println("START");
         setContentView(R.layout.lista_pet_layout);
         initToolbar();
 
@@ -51,10 +52,12 @@ public class ListaPetShopsActivity extends AppCompatActivity {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent = new Intent(ListaPetShopsActivity.this, ListaPetShopsActivity.class);
-//                startActivity(intent);
+            Intent intent = new Intent(ListaPetShopsActivity.this, PetSingleInfoActivity.class);
+            startActivity(intent);
             }
         });
+
+        System.out.println("DONE");
     }
 
     private void initToolbar() {
