@@ -1,6 +1,5 @@
 package lovepetapp.com.lovepet;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,18 +14,19 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import lovepetapp.com.lovepet.R;
+
 /**
  * Created by macbookpro on 07/09/15.
  */
-public class PetSingleInfoActivity extends AppCompatActivity {
+public class PetSingleFeedbackActivity extends AppCompatActivity {
 
     private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.setContentView(R.layout.petshop_single_layout);
-        setUpMapIfNeeded();
+        this.setContentView(R.layout.petshop_single_feedback_layout);
         initToolbar();
     }
     private void initToolbar() {
@@ -39,9 +39,8 @@ public class PetSingleInfoActivity extends AppCompatActivity {
         }
     }
 
-    public void buttonFeedbackClick (View view) {
-        Intent intent = new Intent(PetSingleInfoActivity.this, PetSingleFeedbackActivity.class);
-        startActivity(intent);
+    public void finalizeFeedbackClick (View view) {
+        finish();;
     }
 
     @Override
@@ -64,30 +63,5 @@ public class PetSingleInfoActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    private void setUpMapIfNeeded() {
-        // Do a null check to confirm that we have not already instantiated the map.
-        if (mMap == null) {
-            // Try to obtain the map from the SupportMapFragment.
-            mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
-                    .getMap();
-            // Check if we were successful in obtaining the map.
-            if (mMap != null) {
-                setUpMap();
-            }
-        }
-    }
-
-    /**
-     * This is where we can add markers or lines, add listeners or move the camera. In this case, we
-     * just add a marker near Africa.
-     * <p/>
-     * This should only be called once and when we are sure that {@link #mMap} is not null.
-     */
-    private void setUpMap() {
-        LatLng location = new LatLng(-19.882900, -43.955745);
-        mMap.addMarker(new MarkerOptions().position(location).title("Marker"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 12));
     }
 }

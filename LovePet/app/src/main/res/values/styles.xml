@@ -23,9 +23,11 @@
         <item name="rippleColor">@android:color/white</item>
     </style>
 
+    <color name="selected_item">#fbd2e0</color>
     <color name="primary">#E91E63</color>
     <color name="primary_dark">#E91E63</color>
-    <color name="accent">@color/material_blue_grey_800</color>
-    <color name="accent_translucent">@color/material_blue_grey_800</color>
-    <color name="accent_bright">#B6B6B6</color>
+    <color name="accent">#fbd2e0</color>
+    <color name="accent_translucent">#fbd2e0</color>
+    <color name="accent_bright">#fbd2e0</color>
+
 </resources>
