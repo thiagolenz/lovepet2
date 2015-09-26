@@ -22,18 +22,22 @@ public class PetSingleInfoActivity extends AppCompatActivity {
 
     private GoogleMap mMap;
 
+    private String avatarFile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.gc();
+        this.avatarFile = getIntent().getStringExtra("userAvatar");
         this.setContentView(R.layout.petshop_single_layout);
         setUpMapIfNeeded();
         initToolbar();
     }
+
     private void initToolbar() {
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarSinglePet);
         setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
-
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
@@ -41,7 +45,9 @@ public class PetSingleInfoActivity extends AppCompatActivity {
 
     public void buttonFeedbackClick (View view) {
         Intent intent = new Intent(PetSingleInfoActivity.this, PetSingleFeedbackActivity.class);
+        intent.putExtra("userAvatar", PetSingleInfoActivity.this.avatarFile);
         startActivity(intent);
+        System.gc();
     }
 
     @Override
@@ -86,8 +92,8 @@ public class PetSingleInfoActivity extends AppCompatActivity {
      * This should only be called once and when we are sure that {@link #mMap} is not null.
      */
     private void setUpMap() {
-        LatLng location = new LatLng(-19.882900, -43.955745);
-        mMap.addMarker(new MarkerOptions().position(location).title("Marker"));
+        LatLng location = new LatLng( -19.888664, -43.993662);
+        mMap.addMarker(new MarkerOptions().position(location).title("Center Pet Shop"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 12));
     }
 }

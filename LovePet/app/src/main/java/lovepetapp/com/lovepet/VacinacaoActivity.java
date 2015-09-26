@@ -2,43 +2,37 @@ package lovepetapp.com.lovepet;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 /**
- * Created by macbookpro on 10/08/15.
+ * Created by macbookpro on 26/09/15.
  */
-public class LauncherActivity extends AppCompatActivity {
+public class VacinacaoActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.launcher_screen);
+        this.setContentView(R.layout.screen_vacinacao);
         initToolbar();
-
-        Thread timerThread = new Thread(){
-            public void run(){
-                try{
-                    sleep(3000);
-                }catch(InterruptedException e){
-                    e.printStackTrace();
-                }finally{
-                    Intent intent = new Intent(LauncherActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
-                    System.gc();
-                }
-            }
-        };
-        timerThread.start();
     }
 
     private void initToolbar() {
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarSinglePet);
         setSupportActionBar(toolbar);
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    public void buttonFeedbackClick (View view) {
+        Intent intent = new Intent(VacinacaoActivity.this, PetSingleFeedbackActivity.class);
+        startActivity(intent);
     }
 
     @Override

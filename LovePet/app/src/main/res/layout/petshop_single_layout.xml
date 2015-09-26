@@ -13,14 +13,14 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbarSinglePet"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:layout_scrollFlags="scroll|enterAlways">
             <TextView
-                android:text="Ache Seu PET"
+                android:text="Ache Seu Pet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#ffffffff"
@@ -76,7 +76,7 @@
                             android:layout_width="0dp"
                             android:layout_weight="0.17"
                             android:layout_gravity="center_vertical"
-                            android:src="@android:drawable/ic_menu_call"
+                            android:src="@drawable/ic_phone"
                             android:layout_height="20dp" />
 
                         <LinearLayout
@@ -112,7 +112,7 @@
                             android:layout_width="0dp"
                             android:layout_weight="0.17"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/ic_pin_drop_black_24dp"
+                            android:src="@drawable/ic_map_marker"
                             android:layout_height="20dp" />
 
                         <LinearLayout
@@ -148,7 +148,7 @@
                             android:layout_width="0dp"
                             android:layout_weight="0.17"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/ic_materialup_time"
+                            android:src="@drawable/ic_clock"
                             android:layout_height="20dp" />
 
                         <LinearLayout
@@ -184,7 +184,7 @@
                             android:layout_width="0dp"
                             android:layout_weight="0.17"
                             android:layout_gravity="center_vertical"
-                            android:src="@android:drawable/ic_dialog_email"
+                            android:src="@drawable/ic_email"
                             android:layout_height="20dp" />
 
                         <LinearLayout
@@ -230,9 +230,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
+                android:scaleType="fitCenter"
                 android:clickable="true"
+                app:borderWidth="0dp"
                 app:backgroundTint="#92c34f"
-                android:src="@drawable/ic_add_black"
+                android:src="@drawable/ic_star_rate_white_48dp"
                 app:layout_anchor="@id/viewA"
                 android:onClick="buttonFeedbackClick"
                 app:layout_anchorGravity="bottom|right|end"/>

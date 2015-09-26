@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,20 +28,24 @@ import java.util.List;
  */
 public class ListaPetShopsActivity extends AppCompatActivity {
     private List<PetItemBean> petList = new ArrayList<>();
+    private String avatarFile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("START");
+        System.gc();
         setContentView(R.layout.lista_pet_layout);
         initToolbar();
+
+        this.avatarFile = getIntent().getStringExtra("userAvatar");
 
         final ListView listview = (ListView) findViewById(R.id.pet_list_view);
 
         petList.add(new PetItemBean("Animal 10", "Petshop", true, "10km", "10min - 30min", R.drawable.logo_animal_10));
-        petList.add(new PetItemBean("Cães e cia", "Petshop", true, "10km", "10min - 30min", R.drawable.logo_caes_e_cia));
-        petList.add(new PetItemBean("Center Pet", "Petshop", false, "10km", "10min - 50min", R.drawable.logo_center_pet));
+        petList.add(new PetItemBean("Cães e cia", "Petshop", false, "10km", "10min - 30min", R.drawable.logo_caes_e_cia));
+        petList.add(new PetItemBean("Center Pet", "Petshop", true, "10km", "10min - 50min", R.drawable.logo_center_pet));
         petList.add(new PetItemBean("Louco Por bixo", "Petshop Estética", true, "10km", "30min - 30min", R.drawable.logo_loucoporbicho));
-        petList.add(new PetItemBean("Penelope", "Petshop", true, "10km", "10min - 30min", R.drawable.logo_penelope));
+        petList.add(new PetItemBean("Penelope", "Petshop", false, "10km", "10min - 30min", R.drawable.logo_penelope));
         petList.add(new PetItemBean("PetPolly", "Petshop", false, "10km", "10min - 10min", R.drawable.logo_pet_polly));
         petList.add(new PetItemBean("Univet PetShop", "Petshop", true, "10km", "10min - 20min", R.drawable.logo_univet_pet_shop));
         petList.add(new PetItemBean("Bem Estar Animal PetShop", "Petshop", true, "10km", "10min - 20min", R.drawable.logo_bem_estar_petshop));
@@ -53,15 +58,16 @@ public class ListaPetShopsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Intent intent = new Intent(ListaPetShopsActivity.this, PetSingleInfoActivity.class);
+            intent.putExtra("userAvatar", ListaPetShopsActivity.this.avatarFile);
             startActivity(intent);
+            System.gc();
             }
         });
 
-        System.out.println("DONE");
     }
 
     private void initToolbar() {
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarListaPet);
         setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
 
@@ -141,11 +147,15 @@ public class ListaPetShopsActivity extends AppCompatActivity {
             textPetType.setText(pet.type);
             textPetTime.setText(pet.distanceTime);
             textPetDistance.setText(pet.distanceKm);
-            if (pet.open)
+            if (pet.open) {
                 textOpen.setText("Aberto");
-            else
+                textOpen.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_aberto, 0, 0, 0);
+            } else {
                 textOpen.setText("Fechado");
+                textOpen.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_fechado, 0, 0, 0);
+            }
             imageView.setImageResource(pet.iconId);
+            System.gc();
             return rowView;
         }
     }

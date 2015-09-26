@@ -9,17 +9,16 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    private static final String BANCO_DADOS = "PetLove2";
-    private static int VERSAO = 1;
+    private static final String BANCO_DADOS = "PetLove3";
 
     public DatabaseHelper(Context context) {
-        super(context, BANCO_DADOS, null, VERSAO);
+        super(context, BANCO_DADOS, null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE usuario (_id INTEGER PRIMARY KEY," +
-                " nome TEXT, email TEXT, aniversario TEXT, senha TEXT);");
+                " nome TEXT, email TEXT, aniversario TEXT, senha TEXT, avatarUsuario TEXT);");
     }
 
     @Override

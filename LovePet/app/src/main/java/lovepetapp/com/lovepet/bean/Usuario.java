@@ -8,6 +8,8 @@ public class Usuario {
     private String email;
     private String senha;
     private String aniversario;
+    private String avatarUsuario;
+
 
     public String getNome() {
         return nome;
@@ -39,5 +41,13 @@ public class Usuario {
 
     public void setAniversario(String aniversario) {
         this.aniversario = aniversario;
+    }
+
+    public String getAvatarUsuario() {
+        return avatarUsuario;
+    }
+
+    public void setAvatarUsuario(String avatarUsuario) {
+        this.avatarUsuario = avatarUsuario;
     }
 }

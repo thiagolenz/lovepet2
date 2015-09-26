@@ -1,31 +1,31 @@
 package lovepetapp.com.lovepet;
 
-import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TimePicker;
+import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
+import java.io.File;
 import java.util.Calendar;
 
 import lovepetapp.com.lovepet.bean.Usuario;
 import lovepetapp.com.lovepet.database.UsuarioDao;
+import lovepetapp.com.lovepet.global.PetShoGlobalApplication;
+import lovepetapp.com.lovepet.picasso.CircleTransform;
 
 /**
  * Created by macbookpro on 12/08/15.
@@ -35,6 +35,11 @@ public class CadastroActivity extends AppCompatActivity {
     private EditText email;
     private EditText senha;
     private EditText aniversario;
+    private String avatarUsuario;
+
+    private static int RESULT_LOAD_IMAGE = 1;
+
+    private String selectedImagePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +53,65 @@ public class CadastroActivity extends AppCompatActivity {
         nome = (EditText)findViewById(R.id.nome);
         email = (EditText)findViewById(R.id.email);
         senha = (EditText)findViewById(R.id.senha);
+
+        findViewById(R.id.imageSelectedCadastro)
+                .setOnClickListener(new View.OnClickListener() {
+
+                    public void onClick(View arg0) {
+
+                        Intent i = new Intent(
+                                Intent.ACTION_PICK,
+                                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                        startActivityForResult(i, RESULT_LOAD_IMAGE);
+                    }
+                });
     }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+
+            ImageView imageView = (ImageView) findViewById(R.id.imageSelectedCadastro);
+            //imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
+
+            avatarUsuario = picturePath;
+            Picasso.with(CadastroActivity.this).load(new File(picturePath) ).transform(new CircleTransform()).into(imageView);
+        }
+    }
+
+    /**
+     * helper to retrieve the path of an image URI
+     */
+    public String getPath(Uri uri, Intent data) {
+
+        Uri _uri = data.getData();
+
+        // this will be null if no image was selected...
+        if (_uri != null) {
+            // now we get the path to the image file
+            Cursor cursor = getContentResolver().query(_uri, null, null, null, null);
+            cursor.moveToFirst();
+            String imageFilePath = cursor.getString(0);
+            cursor.close();
+            return imageFilePath;
+        }
+        return null;
+    }
+
 
     public void onCriarCadastroClick (View view) {
         Usuario usuario = new Usuario();
@@ -56,11 +119,35 @@ public class CadastroActivity extends AppCompatActivity {
         usuario.setEmail(email.getText().toString());
         usuario.setSenha(senha.getText().toString());
         usuario.setAniversario(aniversario.getText().toString());
+        usuario.setAvatarUsuario(avatarUsuario);
+        if (usuario.getAvatarUsuario() == null) {
+            Toast toast = Toast.makeText(this, "Selecione uma imagem para o perfil", Toast.LENGTH_SHORT);
+            toast.show();
+            return ;
+        }
+
+        if (usuario.getEmail().length() == 0
+                || usuario.getNome().length() == 0
+                || usuario.getSenha().length() == 0
+                || usuario.getAniversario().length() == 0) {
+            Toast toast = Toast.makeText(this, "Informe todos campos", Toast.LENGTH_SHORT);
+            toast.show();
+            return ;
+        }
+
         new UsuarioDao().salvar(usuario, this);
 
         Intent intent = new Intent(CadastroActivity.this, MainActivity.class);
+        final PetShoGlobalApplication globalVariable = (PetShoGlobalApplication) getApplicationContext();
+
+        //Set name and email in global/application context
+        globalVariable.setUserAvatar(usuario.getAvatarUsuario());
+        globalVariable.setUserEmail(usuario.getEmail());
+        globalVariable.setUserName(usuario.getNome());
+
         startActivity(intent);
-        finish ();
+        finish();
+        System.gc();;
     }
 
     private void initToolbar() {

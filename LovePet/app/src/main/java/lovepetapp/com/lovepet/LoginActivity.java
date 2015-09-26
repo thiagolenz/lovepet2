@@ -1,9 +1,7 @@
 package lovepetapp.com.lovepet;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -14,6 +12,7 @@ import android.widget.Toast;
 
 import lovepetapp.com.lovepet.bean.Usuario;
 import lovepetapp.com.lovepet.database.UsuarioDao;
+import lovepetapp.com.lovepet.global.PetShoGlobalApplication;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -44,12 +43,20 @@ public class LoginActivity extends AppCompatActivity {
             toast.show();
         } else {
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            final PetShoGlobalApplication globalVariable = (PetShoGlobalApplication) getApplicationContext();
+
+            //Set name and email in global/application context
+            globalVariable.setUserAvatar(usuario.getAvatarUsuario());
+            globalVariable.setUserEmail(usuario.getEmail());
+            globalVariable.setUserName(usuario.getNome());
+
             startActivity(intent);
-            finish ();
+
+            finish();
+            System.gc();;
         }
 
     }
-
 
     private void initToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

@@ -21,6 +21,7 @@ public class UsuarioDao {
         values.put("email", usuario.getEmail());
         values.put("senha", usuario.getSenha());
         values.put("aniversario", usuario.getAniversario());
+        values.put("avatarUsuario", usuario.getAvatarUsuario());
 
         long resultado = db.insert("usuario", null, values);
         db.close();
@@ -31,7 +32,7 @@ public class UsuarioDao {
        try {
            DatabaseHelper helper = new DatabaseHelper(context);
            SQLiteDatabase db = helper.getReadableDatabase();
-           String sql = "SELECT _id, nome, email, senha, aniversario FROM usuario  " +
+           String sql = "SELECT _id, nome, email, senha, aniversario, avatarUsuario FROM usuario  " +
                    " where email = ? and senha = ?";
 
            String[] selectionArgs = new String[]{email, senha};
@@ -54,6 +55,7 @@ public class UsuarioDao {
         usuario.setEmail(cursor.getString(cursor.getColumnIndex("email")));
         usuario.setAniversario(cursor.getString(cursor.getColumnIndex("aniversario")));
         usuario.setSenha(cursor.getString(cursor.getColumnIndex("senha")));
+        usuario.setAvatarUsuario(cursor.getString(cursor.getColumnIndex("avatarUsuario")));
 
         return usuario;
     }

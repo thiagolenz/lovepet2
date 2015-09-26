@@ -8,46 +8,51 @@
     android:fitsSystemWindows="true"
     android:background="@drawable/fundo_screen_principal"
     tools:context=".MainActivity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <ScrollView
+        android:layout_width="wrap_content"
         android:layout_marginTop="20dp"
-        android:orientation="vertical">
-        <ImageView
-            android:id="@+id/avatarDog"
-            android:layout_width="wrap_content"
-            android:layout_height="120dp"
-            android:layout_marginTop="70dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="10dp" />
-        <TextView
-            android:text="Nagu"
-            android:gravity="center"
-            android:textSize="25dp"
-            android:textAlignment="center"
-            android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/avatarDog"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:layout_marginTop="70dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp" />
+            <TextView
+                android:text="Nagu"
+                android:gravity="center"
+                android:textSize="25dp"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-        <TextView
-            android:text="Localidade, ES"
-            android:drawableLeft="@drawable/ic_pin_drop_black_24dp"
-            android:textAlignment="center"
-            android:gravity="center_vertical"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_height="wrap_content" />
+            <TextView
+                android:text="Belo Horizonte, MG"
+                android:drawableLeft="@drawable/ic_map_marker"
+                android:textAlignment="center"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_height="wrap_content" />
 
-        <ListView
-            android:background="@android:color/white"
-            android:id="@+id/actionList"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+                <ListView
+                    android:background="@android:color/white"
+                    android:id="@+id/actionList"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
 
-        </ListView>
-    </LinearLayout>
+
+                </ListView>
+        </LinearLayout>
+
+    </ScrollView>
 
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/content"

@@ -11,14 +11,14 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbarListaPet"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:layout_scrollFlags="scroll|enterAlways">
             <TextView
-                android:text="Ache o seu PET"
+                android:text="Ache o seu Pet"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#ffffffff"
@@ -31,6 +31,7 @@
 
     <ListView
         android:id="@+id/pet_list_view"
+        android:divider="@android:color/transparent"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
     </ListView>

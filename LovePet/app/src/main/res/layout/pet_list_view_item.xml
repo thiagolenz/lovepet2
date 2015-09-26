@@ -2,23 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:minHeight="42dp"
-    android:paddingTop="5dp"
-    android:paddingBottom="5dp"
     android:background="@drawable/list_item_background"
     android:weightSum="1"
     android:layout_width="fill_parent" android:layout_height="72dp">
     <ImageView
         android:layout_width="0dp"
         android:layout_weight="0.2"
-        android:paddingLeft="2dp"
+        android:padding="10dp"
         android:layout_gravity="center"
-        android:paddingRight="2dp"
+        android:background="@android:color/white"
         android:id="@+id/pet_logo"
-        android:layout_height="32dp" />
+        android:layout_height="wrap_content" />
     <LinearLayout
         android:layout_width="0dp"
         android:layout_weight="0.8"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:weightSum="1"
+        android:background="@drawable/pet_list_item_drawable_box"
         android:orientation="vertical"
         android:layout_height="fill_parent">
         <LinearLayout
@@ -28,12 +29,12 @@
             android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/pet_name_label"
-                android:layout_weight="0.8"
+                android:layout_weight="0.75"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/pet_status_open"
-                android:layout_weight="0.2"
+                android:layout_weight="0.25"
                 android:textSize="10dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
